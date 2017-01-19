@@ -16,6 +16,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'phonelib'
 
 group :development, :test do
   gem 'byebug', platform: :mri
