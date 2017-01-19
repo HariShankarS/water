@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all.order("CREATED_AT DESC")
+    @orders = current_user.orders.all.order("CREATED_AT DESC")
   end
 
   # GET /orders/1
@@ -14,9 +14,13 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
+    if current_user.orders.last.present?
+      attributes_from_last_order = current_user.orders.last.attributes.select { |key, value| ["water_brand", "number_of_cans", "address", "user_id", "mobile"].include?(key)  }
+      @order = Order.new attributes_from_last_order
+    else
+      @order = Order.new
+    end
   end
-
   # GET /orders/1/edit
   def edit
   end
@@ -24,7 +28,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.new(order_params)
 
     respond_to do |format|
       if @order.save
@@ -69,6 +73,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:number_of_cans, :water_brand, :address)
+      params.require(:order).permit(:number_of_cans, :water_brand, :address, :user_id, :mobile)
     end
 end

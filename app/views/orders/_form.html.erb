@@ -13,12 +13,22 @@
 <div class="col-md-10 col-md-offset-1">
   <div class="form-group">
     <%= f.label :number_of_cans %>
-    <%= f.number_field :number_of_cans, :class => "form-control" %>
+    <%= f.number_field :number_of_cans, :value => 1, :min => 1, :max => 20, :class => "form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :water_brand %>
     <%= f.select(:water_brand, ["Bisleri", "Kinley", "Bublee", "Aquafina", "Himalayan","Bailey","Kingfisher"], {}, { :class => 'form-control' }) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :mobile %>
+    <%= f.text_field :mobile, :class => "form-control" %>
   </div>
 
   <div class="actions">

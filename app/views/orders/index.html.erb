@@ -6,8 +6,8 @@
         <div class="order">
           <div class="pull-right qty" > <%= "#{order.number_of_cans} #{"Can".pluralize(order.number_of_cans.to_i)}" %> </div>
           <h6> <%= order.created_at.strftime("%d %b %Y %l:%M %p") %></h6>
-          <p><%= current_user.address %></p>
-          <p><%= current_user.mobile %></p>
+          <p><%= order.address %></p>
+          <p><%= order.mobile %></p>
           <hr />
           <div class="icons-set clearfix">
             <div class="pull-left"><h5><%= order.water_brand.upcase %></h5></div>

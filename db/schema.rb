@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110144040) do
+ActiveRecord::Schema.define(version: 20170107090101) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -47,8 +47,10 @@ ActiveRecord::Schema.define(version: 20170110144040) do
     t.integer  "number_of_cans"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.string   "water_brand"
+    t.integer  "user_id"
     t.string   "address"
+    t.string   "water_brand"
+    t.string   "mobile"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,8 +67,6 @@ ActiveRecord::Schema.define(version: 20170110144040) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
-    t.string   "address"
-    t.string   "mobile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
