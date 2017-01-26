@@ -1,29 +1,46 @@
-<div class="container">
+<div class="container orders">
   <h1> My Orders </h1>
   <div class="row row-fluid">
     <% @orders.each do |order| %>
-      <div class="col-md-4 list">
-        <div class="order">
-          <div class="pull-right qty" > <%= "#{order.number_of_cans} #{"Can".pluralize(order.number_of_cans.to_i)}" %> </div>
-          <h6> <%= order.created_at.strftime("%d %b %Y %l:%M %p") %></h6>
-          <p><%= order.address %></p>
-          <p><%= order.mobile %></p>
-          <hr />
-          <div class="icons-set clearfix">
-            <div class="pull-left"><h5><%= order.water_brand.upcase %></h5></div>
-            <div class="pull-right">
-              <%= link_to  edit_order_path(order) do %>
-                <i class="material-icons">mode_edit</i> 
-              <% end %>
-              <i class="material-icons" data-toggle="modal" data-target="#order-show-<%= order.id %>">info_outline</i> 
-              <%= link_to order_path(order), "data-confirm" => "Are you Sure?", :method => :delete do %>
-                <i class="material-icons">delete</i>
-              <% end %>
+      <div class="col-md-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <div class="icons-set clearfix">
+              <div class="pull-left">
+                <h3 class="panel-title"><%= order.water_brand.upcase %></h3>
+              </div>
+              <div class="pull-right qty" >
+                <%= "#{order.number_of_cans} #{"Can".pluralize(order.number_of_cans.to_i)}" %>
+              </div>
             </div>
-            <%= render partial: "show", locals: {order: order} %>
+          </div>
+          <div class="panel-body">
+            <p><%= current_user.name %></p>
+            <hr />
+            <p><%= order.address %></p>
+            <p><%= order.mobile %></p>
+          </div>
+          <div class="panel-footer">
+            <div class="icons-set clearfix">
+              <div class="pull-left">
+                <h6><%= order.created_at.strftime("%d %b %Y %l:%M %p") %></h6>
+              </div>
+              <div class="pull-right">
+                <%= link_to edit_order_path(order) do %>
+                  <i class="material-icons">mode_edit</i> 
+                <% end %>
+                <%= link_to order_path(order) do %>
+                  <i class="material-icons">info_outline</i> 
+                <% end %>
+                <%= link_to order_path(order), "data-confirm" => "Are you Sure?", :method => :delete do %>
+                  <i class="material-icons">delete</i>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     <% end %>
   </div>
+  <p> <%= link_to "Order a New Water can", new_order_path %>
 </div>

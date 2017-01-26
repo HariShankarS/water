@@ -13,16 +13,20 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-material-design/";
+@import "ripples";
 h1 {
   text-align: center;
 }
 .list {
   border: 20px solid white;
 }
-.order {
-  border: 1px solid black;
-  padding: 10px;
-}
 i {
   cursor: pointer;
+}
+
+.orders .qty {
+  color: #585858;
+  font-style: italic;
+  font-weight: bold;
 }

@@ -45,9 +45,13 @@
         </div>
       </div>
     </nav>
-    <div class="col-md-12">
+  <div class="container-fluid">
+    <div class="col-md-4 col-md-offset-4">
       <br><%= flash_messages %>
     </div>
+  </div>
+  <div class="container-fluid">
     <%= yield %>
+  </div>
   </body>
 </html>
