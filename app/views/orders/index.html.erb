@@ -3,14 +3,14 @@
   <div class="row row-fluid">
     <% @orders.each do |order| %>
       <div class="col-md-4">
-        <div class="panel panel-info">
+        <div class="panel panel-<%= class_for[order.state.to_sym] %>">
           <div class="panel-heading">
             <div class="icons-set clearfix">
               <div class="pull-left">
                 <h3 class="panel-title"><%= order.water_brand.upcase %></h3>
               </div>
               <div class="pull-right qty" >
-                <%= "#{order.number_of_cans} #{"Can".pluralize(order.number_of_cans.to_i)}" %>
+                <%= "#{order.cans} #{"Can".pluralize(order.cans.to_i)}" %>
               </div>
             </div>
           </div>
@@ -19,11 +19,12 @@
             <hr />
             <p><%= order.address %></p>
             <p><%= order.mobile %></p>
+            <p><h6><%= order.created_at.strftime("%d %b %Y %l:%M %p") %></h6></p>
           </div>
           <div class="panel-footer">
             <div class="icons-set clearfix">
               <div class="pull-left">
-                <h6><%= order.created_at.strftime("%d %b %Y %l:%M %p") %></h6>
+                <h5><span class="label label-<%= class_for[order.state.to_sym] %>"><%= order.state.upcase %></span></h5>
               </div>
               <div class="pull-right">
                 <%= link_to edit_order_path(order) do %>

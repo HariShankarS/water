@@ -12,6 +12,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'therubyracer', platforms: :ruby
 gem 'devise'
 gem 'jquery-rails'
+gem 'aasm'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'activeadmin', github: 'activeadmin'

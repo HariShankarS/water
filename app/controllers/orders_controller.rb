@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     if current_user.orders.last.present?
-      attributes_from_last_order = current_user.orders.last.attributes.select { |key, value| ["water_brand", "number_of_cans", "address", "user_id", "mobile"].include?(key)  }
+      attributes_from_last_order = current_user.orders.last.attributes.select { |key, value| ["water_brand", "cans", "address", "user_id", "mobile"].include?(key)  }
       @order = Order.new attributes_from_last_order
     else
       @order = Order.new
@@ -73,6 +73,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:number_of_cans, :water_brand, :address, :user_id, :mobile)
+      params.require(:order).permit(:cans, :water_brand, :address, :user_id, :mobile)
     end
 end
